@@ -69,7 +69,6 @@ window.addEventListener('load',()=>{
          </div>`
         }
     })
-    
 })
 //api:https://gnews.io/api/v4/search?q="${topic}"%20in%20india&token=c6552a8e5a6575a8064cb9962114c4c5
 function gettopicnews(e){
@@ -212,7 +211,7 @@ var loadweather = (e)=>{
 
 }
 var loadwallpapers = (e)=>{
-    var array = ["A rose by any other name would smell as sweet.", "All that glitters is not gold.", "All the world’s a stage, and all the men and women merely players.", "Ask not what your country can do for you; ask what you can do for your country.", "Ask, and it shall be given you; seek, and you shall find.", "Eighty percent of success is showing up.", "Elementary, my dear Watson.", "For those to whom much is given, much is required.", "Frankly, my dear, I don't give a damn.", "Genius is one percent inspiration and ninety-nine percent perspiration.", "Go ahead, make my day.", "He travels the fastest who travels alone.", "Hell has no fury like a woman scorned.", "Hell is other people.", "Here's looking at you, kid.", "Houston, we have a problem.", "I have a dream that my four little children will o…their skin but by the content of their character.", "I have always depended on the kindness of strangers.", "I love the smell of napalm in the morning.", "I think therefore I am.", "If at first you don’t succeed, try, try again.", "If you are going through hell, keep going.", "If you build it, they will come.", "If you want something done right, do it yourself.", "If you want something said, ask a man; if you want something done, ask a woman.", "I'll be back.", "I'm gonna make him an offer he can't refuse.", "I've got a feeling we're not in Kansas anymore.", "Keep your friends close, but your enemies closer.", "Knowledge is power.", "Life is like a box of chocolates. You never know what you’re gonna get.", "Life is like riding a bicycle. To keep your balance, you must keep moving.", "May the Force be with you.", "No one can make you feel inferior without your consent.", "Not all those who wander are lost.", "Nothing is certain except for death and taxes.", "Parting is such sweet sorrow", "Power corrupts; absolute power corrupts absolutely.", "Speak softly and carry a big stick", "That’s one small step for a man, a giant leap for mankind.", "The love of money is the root of all evil.", "The only thing we have to fear is fear itself.", "The truth will set you free.", "There's no place like home.", "Three can keep a secret, if two of them are dead.", "Tis better to have loved and lost than never to have loved at all.", "To be or not to be, that is the question.", "To err is human; to forgive, divine.", "To thine own self, be true.", "Two roads diverged in a wood, and I, I took the on…avelled by, and that has made all the difference.", "United we stand, divided we fall.", "What doesn't kill us makes us stronger.", "What we've got here is failure to communicate. Some men you just can't reach.", "Whatever you are, be a good one.", "You can fool all of the people some of the time, a…you can't fool all of the people all of the time.", "You must be the change you wish to see in the world.", "You talkin' to me?"]
+            var array = ["A rose by any other name would smell as sweet.", "All that glitters is not gold.", "All the world’s a stage, and all the men and women merely players.", "Ask not what your country can do for you; ask what you can do for your country.", "Ask, and it shall be given you; seek, and you shall find.", "Eighty percent of success is showing up.", "Elementary, my dear Watson.", "For those to whom much is given, much is required.", "Frankly, my dear, I don't give a damn.", "Genius is one percent inspiration and ninety-nine percent perspiration.", "Go ahead, make my day.", "He travels the fastest who travels alone.", "Hell has no fury like a woman scorned.", "Hell is other people.", "Here's looking at you, kid.", "Houston, we have a problem.", "I have a dream that my four little children will o…their skin but by the content of their character.", "I have always depended on the kindness of strangers.", "I love the smell of napalm in the morning.", "I think therefore I am.", "If at first you don’t succeed, try, try again.", "If you are going through hell, keep going.", "If you build it, they will come.", "If you want something done right, do it yourself.", "If you want something said, ask a man; if you want something done, ask a woman.", "I'll be back.", "I'm gonna make him an offer he can't refuse.", "I've got a feeling we're not in Kansas anymore.", "Keep your friends close, but your enemies closer.", "Knowledge is power.", "Life is like a box of chocolates. You never know what you’re gonna get.", "Life is like riding a bicycle. To keep your balance, you must keep moving.", "May the Force be with you.", "No one can make you feel inferior without your consent.", "Not all those who wander are lost.", "Nothing is certain except for death and taxes.", "Parting is such sweet sorrow", "Power corrupts; absolute power corrupts absolutely.", "Speak softly and carry a big stick", "That’s one small step for a man, a giant leap for mankind.", "The love of money is the root of all evil.", "The only thing we have to fear is fear itself.", "The truth will set you free.", "There's no place like home.", "Three can keep a secret, if two of them are dead.", "Tis better to have loved and lost than never to have loved at all.", "To be or not to be, that is the question.", "To err is human; to forgive, divine.", "To thine own self, be true.", "Two roads diverged in a wood, and I, I took the on…avelled by, and that has made all the difference.", "United we stand, divided we fall.", "What doesn't kill us makes us stronger.", "What we've got here is failure to communicate. Some men you just can't reach.", "Whatever you are, be a good one.", "You can fool all of the people some of the time, a…you can't fool all of the people all of the time.", "You must be the change you wish to see in the world.", "You talkin' to me?"]
             var currentIndex = array.length, temporaryValue, randomIndex;
 
             while (0 !== currentIndex) {
@@ -222,23 +221,21 @@ var loadwallpapers = (e)=>{
             array[currentIndex] = array[randomIndex];
             array[randomIndex] = temporaryValue;
             }
-            var api = `https://arcane-cove-56746.herokuapp.com/api/newsapi/v1/images/?n=15`
+            var api = `https://arcane-cove-56746.herokuapp.com/api/newsapi/v1/images/?n=50`
             fetch(api)
             .then(res=>{
                 return res.json();
             })
             .then(data=>{
-                document.getElementById("all-wallpaper-container").innerHTML='';
-                for(let i = 0; i<15;i++){
-                document.getElementById("all-wallpaper-container").innerHTML+=`<div class="wallpapers" style="background-image:url('./weather-images/09n.gif')">
+                for(let i = 0; i<50;i++){
+                document.getElementById("all-wallpaper-container").innerHTML+=`<div class="wallpapers" style="background-image:url('${data.result[i].image}')">
                 <div class="details"><br><h4 class="quotes">${array[i]}</h4><br><p class="meta-text" style="margin-bottom:14px">&#169; Unplash images</p>
-                ${downloadimage(data.result[i].image)}
+                <div class="d-container">${downloadimage(data.result[i].image,i)}</div>
                 </div>
                 </div>`
                 }
             })
 
-            
     var classes = document.querySelectorAll('.nav-icons');
     [].forEach.call(classes, function(el) {
     el.classList.remove("active");
@@ -251,7 +248,7 @@ var loadwallpapers = (e)=>{
     document.getElementById('all-wallpaper-container').style.display="block"
 
 }
-    async function downloadimage(imageSrc) {
+    async function downloadimage(imageSrc,num) {
         const image = await fetch(imageSrc)
         const imageBlog = await image.blob()
         const imageURL = URL.createObjectURL(imageBlog)
@@ -259,6 +256,8 @@ var loadwallpapers = (e)=>{
         const link = document.createElement('a')
         link.href = imageURL
         link.download = 'wallpaper.jpg'
-        return link;
-
+        link.innerText ="Download"
+        link.classList.add('d-btn')
+        document.getElementsByClassName('d-container')[num].appendChild(link)
+        
 }
