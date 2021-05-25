@@ -232,7 +232,7 @@ var loadwallpapers = (e)=>{
                 for(let i = 0; i<15;i++){
                 document.getElementById("all-wallpaper-container").innerHTML+=`<div class="wallpapers" style="background-image:url('${data.result[i].image}')">
                 <div class="details"><br><h4 class="quotes">${array[i]}</h4><br><p class="meta-text" style="margin-bottom:14px">&#169; Unplash images</p>
-                <a href="${data.result[i].image}" class="d-btn" onclick="downloadimage(this)">Download</a>
+                <a href="${data.result[i].image}" class="d-btn" onclick="downloadimage(this,event)">Download</a>
                 </div>
                 </div>`
                 }
@@ -251,7 +251,7 @@ var loadwallpapers = (e)=>{
     document.getElementById('all-wallpaper-container').style.display="block"
 
 }
-    async function downloadimage(imageSrc) {
+    async function downloadimage(imageSrc,e) {
         const image = await fetch(imageSrc.href)
         const imageBlog = await image.blob()
         const imageURL = URL.createObjectURL(imageBlog)
@@ -262,5 +262,6 @@ var loadwallpapers = (e)=>{
         document.body.appendChild(link)
         link.click()
         document.body.removeChild(link)
+        e.preventDefault();
 
 }
