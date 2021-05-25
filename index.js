@@ -227,10 +227,11 @@ var loadwallpapers = (e)=>{
                 return res.json();
             })
             .then(data=>{
+                document.getElementById("all-wallpaper-container").innerHTML=""
                 for(let i = 0; i<50;i++){
                 document.getElementById("all-wallpaper-container").innerHTML+=`<div class="wallpapers" style="background-image:url('${data.result[i].image}')">
                 <div class="details"><br><h4 class="quotes">${array[i]}</h4><br><p class="meta-text" style="margin-bottom:14px">&#169; Unplash images</p>
-                <div class="d-container">${downloadimage(data.result[i].image,i)}</div>
+                <a href="${data.result[i].download}" class="d-btn">Download</a>
                 </div>
                 </div>`
                 }
@@ -247,17 +248,4 @@ var loadwallpapers = (e)=>{
     });
     document.getElementById('all-wallpaper-container').style.display="block"
 
-}
-    async function downloadimage(imageSrc,num) {
-        const image = await fetch(imageSrc)
-        const imageBlog = await image.blob()
-        const imageURL = URL.createObjectURL(imageBlog)
-      
-        const link = document.createElement('a')
-        link.href = imageURL
-        link.download = 'wallpaper.jpg'
-        link.innerText ="Download"
-        link.classList.add('d-btn')
-        document.getElementsByClassName('d-container')[num].appendChild(link)
-        
 }
