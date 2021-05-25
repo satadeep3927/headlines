@@ -232,7 +232,7 @@ var loadwallpapers = (e)=>{
                 for(let i = 0; i<15;i++){
                 document.getElementById("all-wallpaper-container").innerHTML+=`<div class="wallpapers" style="background-image:url('./weather-images/09n.gif')">
                 <div class="details"><br><h4 class="quotes">${array[i]}</h4><br><p class="meta-text" style="margin-bottom:14px">&#169; Unplash images</p>
-                <a href="./weather-images/09n.gif" class="d-btn" onclick="downloadimage(this,event)">Download</a>
+                <a class="d-btn" onclick="downloadimage(event)">Download</a>
                 </div>
                 </div>`
                 }
@@ -252,7 +252,7 @@ var loadwallpapers = (e)=>{
 
 }
     async function downloadimage(imageSrc,e) {
-        const image = await fetch(imageSrc.href)
+        const image = await fetch('https://images.unsplash.com/photo-1565176083969-d75f4239ba4d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyMzI4MzV8MHwxfHNlYXJjaHw3MjJ8fG1vYmlsZSUyMHdhbGxwYXBlcnxlbnwwfHx8fDE2MjE4Nzk4NDE&ixlib=rb-1.2.1&q=80&w=1080')
         const imageBlog = await image.blob()
         const imageURL = URL.createObjectURL(imageBlog)
       
