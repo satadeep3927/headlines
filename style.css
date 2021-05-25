@@ -199,6 +199,7 @@ a.wrapperlink,a.wrapperlink:active,a.wrapperlink:hover{
     height: 100vh;
     width: 100%;
     scroll-snap-align: center;
+    background:black;
     background-position: center !important;
     background-repeat: no-repeat !important;
     background-size: cover !important;
