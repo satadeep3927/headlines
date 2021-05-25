@@ -198,6 +198,32 @@ var loadweather = (e)=>{
             })
         })
     }
+    else{
+        let query = ((window.location.href).split('?'))[1]
+        query = query.split('&');
+        for(let i = 0;i<2;i++){
+            query[i] = (query.split("="))[1]
+        }
+        lat = query[0]
+        lon = query[1]
+        var api = `https://api.openweathermap.org/data/2.5/find?lat=${lat}&lon=${lon}&appid=c48ee98d738b3e599eaa4612efce566f`
+            fetch(api)
+            .then(res=>{
+                return res.json();
+            })
+            .then(data=>{
+                document.getElementById("all-weather-container").innerHTML=`<div class="main-weather" style="background:url('./weather-images/${data['list'][0]['weather'][0]['icon']}.gif')">
+                <div class="data-place mx-auto"><div><p class="location">${data.list[0].name}</p>
+                 <p class="temparature"><span class="tempnum">${(data['list'][0]['main']['temp']-273).toFixed(1)}</span><span class="unit">°C</span><br><div class="feels">
+                         Feels like ${(data['list'][0]['main']['feels_like']-273).toFixed(1)}°C</div></p></div><div class="message">${data['list'][0]['weather'][0]['description']}</div></div>  
+                <div class="w-info mx-auto"> <div class="w-info-slot"><p class="info">${data['list'][0]['main']['humidity']}%</p><span class="meta-text">Humidity</span>
+                    </div><div class="w-info-slot"><p class="info">${data['list'][0]['wind']['speed']} KM</p><span class="meta-text">Velocity</span>
+                 </div><div class="w-info-slot"><p class="info">${data['list'][0]['main']['pressure']}</p><span class="meta-text">Pressure</span>
+                 </div></div>
+             </div>`
+            })
+        
+    }
     var classes = document.querySelectorAll('.nav-icons');
     [].forEach.call(classes, function(el) {
     el.classList.remove("active");
