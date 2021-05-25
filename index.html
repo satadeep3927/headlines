@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="white" />
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <title>Newspaper</title>
+</head>
+<body>
+<div id="all-news-container" class="all-container">
+ <form class="search-wrap mx-auto" id="searchbar" autocomplete="off" onsubmit="searchtopic(event)">
+ <input type="text" name="" id="topicsearch" placeholder="Search a Topic" required>
+ <i class="fa fa-search" id="searchicon"></i>
+ </form>
+ <div class="item-container mx-auto">
+    <div class="items" onclick="loadallnews(this)">All</div>
+     <div class="items" onclick="gettopicnews(this)">Cricket</div>
+     <div class="items"  onclick="gettopicnews(this)">Football</div>
+     <div class="items"  onclick="gettopicnews(this)">Covid19</div>
+     <div class="items"  onclick="gettopicnews(this)">Politics</div>
+     <div class="items"  onclick="gettopicnews(this)">Business</div>
+     <div class="items"  onclick="gettopicnews(this)">Esports</div>
+     <div class="items"  onclick="gettopicnews(this)">Weather</div>
+     <div class="items"  onclick="gettopicnews(this)">Religion</div>
+     <div class="items"  onclick="gettopicnews(this)">Economy</div>
+     <div class="items"  onclick="gettopicnews(this)">Travel</div>
+     <div class="items"  onclick="gettopicnews(this)">Hinduism</div>
+     <div class="items"  onclick="gettopicnews(this)">Health</div>
+     <div class="items"  onclick="gettopicnews(this)">Government</div>
+     <div class="items"  onclick="gettopicnews(this)">Education</div>
+     <div class="items"  onclick="gettopicnews(this)">Science</div>
+     <div class="items"  onclick="gettopicnews(this)">Women</div>
+     <div class="items"  onclick="gettopicnews(this)">Asia</div>
+     <div class="items"  onclick="gettopicnews(this)">Technology</div>
+
+     
+ </div>
+ <div class="news-container mx-auto" id="news-container">
+     
+ </div>
+</div>
+<div id="all-weather-container" class="all-container">
+    
+</div>
+<div class="all-container" id="all-wallpaper-container">
+
+</div>
+ <div class="navbar" id="navbar">
+<i class="fa fa-home nav-icons active" id="home-icon" onclick="loadallnews()"></i>
+<i class="fa fa-cloud nav-icons" id="weather-icon" onclick="loadweather(this)"></i>
+<i class="fa fa-image nav-icons" id="wallpaper-icon" onclick="loadwallpapers(this)"></i>
+<i class="fa fa-syringe nav-icons" id="vaccine-icon"></i>
+ </div>
+ <iframe name="target" style="display: none;"></iframe>
+<script src="./index.js"></script>  
+</body>
+</html>
