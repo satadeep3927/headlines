@@ -229,6 +229,7 @@ var loadwallpapers = (e)=>{
             })
             .then(data=>{
                 for(let i = 0; i<20;i++){
+                document.getElementById("all-wallpaper-container").innerHTML='';
                 document.getElementById("all-wallpaper-container").innerHTML+=`<div class="wallpapers" style="background-image:url('${data.result[i].image}')">
                 <div class="details"><br><h4 class="quotes">${array[i]}</h4><br><p class="meta-text" style="margin-bottom:14px">&#169; Unplash images</p>
                 <a href="${data.result[i].image}" onclick="downloadimage(this)" target="target" class="d-btn">Download</a>
