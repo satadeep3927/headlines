@@ -146,6 +146,7 @@ a.wrapperlink,a.wrapperlink:active,a.wrapperlink:hover{
 .main-weather{
     height: 100vh;
     width: 100%;
+    background:"dodgerblue"
     background-position: center !important;
     background-repeat: no-repeat !important;
     background-size: cover !important;
