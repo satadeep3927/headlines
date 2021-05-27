@@ -310,7 +310,7 @@ function loadalljobs(){
          </div></a>`
         }
     })
-    fetch('http://arcane-cove-56746.herokuapp.com/api/newsapi/v1/job?topic=Other%20All%20India%20Exams')
+    fetch('https://arcane-cove-56746.herokuapp.com/api/newsapi/v1/job?topic=Other%20All%20India%20Exams')
     .then(res=>{
         return res.json()
     })
