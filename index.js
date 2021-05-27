@@ -133,7 +133,7 @@ function loadallnews(e){
     .then(data=>{
         document.getElementById("news-container").innerHTML= '';
         for(var i=0; i<data.totalArticles; i++){
-            document.getElementById("news-container").innerHTML+=`<div class="news" style="background: linear-gradient( transparent 20%, rgb(56, 55, 55) 100%),url('${data.articles[i]['image']}')">
+            document.getElementById("news-container").innerHTML+=`<a href=${data.articles[i].link} class="wrapper"><div class="news" style="background: linear-gradient( transparent 20%, rgb(56, 55, 55) 100%),url('${data.articles[i]['image']}')">
             <div class="text">
                 <p class="meta-text">
                     ${data.articles[i]['source']['name']} · ${dateconverter(data.articles[i]['publishedAt'])}
@@ -142,7 +142,7 @@ function loadallnews(e){
                 ${data.articles[i]['title']}
                 </h3>
             </div>
-         </div>`
+         </div></a>`
         }
     })
     fetch('https://arcane-cove-56746.herokuapp.com/api/newsapi/v1/?q=news')
@@ -151,7 +151,7 @@ function loadallnews(e){
     })
     .then(data=>{
         for(var i=0; i<data.totalArticles; i++){
-            document.getElementById("news-container").innerHTML+=`<div class="news" style="background: linear-gradient( transparent 20%, rgb(56, 55, 55) 100%),url('${data.articles[i]['image']}')">
+            document.getElementById("news-container").innerHTML+=`<a href=${data.articles[i].link} class="wrapper"><div class="news" style="background: linear-gradient( transparent 20%, rgb(56, 55, 55) 100%),url('${data.articles[i]['image']}')">
             <div class="text">
                 <p class="meta-text">
                     ${data.articles[i]['source']['name']} · ${dateconverter(data.articles[i]['publishedAt'])}
@@ -160,7 +160,7 @@ function loadallnews(e){
                 ${data.articles[i]['title']}
                 </h3>
             </div>
-         </div>`
+         </div></a>`
         }
         var classes = document.querySelectorAll('.items');
          [].forEach.call(classes, function(el) {
@@ -284,6 +284,87 @@ var loadwallpapers = (e)=>{
     });
     document.getElementById('all-wallpaper-container').style.display="block"
 
+}
+function loadalljobs(){
+    fetch('https://arcane-cove-56746.herokuapp.com/api/newsapi/v1/job?topic=West%20Bengal')
+    .then(res=>{
+        return res.json()
+    })
+    .then(data=>{
+        document.getElementById("job-container").innerHTML= '';
+        for(var i=0; i<(data.result).length; i++){
+            document.getElementById("job-container").innerHTML+=`<a href="${data.result[i].link}" class="wrapper"><div class="jobs">
+            <div class="jobtext">
+                <p class="meta-text">
+                   ${data.result[i].recruiter}<br>${data.result[i].qualification}
+                </p>
+                <h3>
+                ${data.result[i].post}
+                </h3>
+            </div>
+         </div></a>`
+        }
+    })
+    fetch('http://arcane-cove-56746.herokuapp.com/api/newsapi/v1/job?topic=Other%20All%20India%20Exams')
+    .then(res=>{
+        return res.json()
+    })
+    .then(data=>{
+        for(var i=0; i<(data.result).length; i++){
+            document.getElementById("job-container").innerHTML+=`<a href="${data.result[i].link}" class="wrapper"><div class="jobs">
+            <div class="jobtext">
+                <p class="meta-text">
+                   ${data.result[i].recruiter}<br>${data.result[i].qualification}
+                </p>
+                <h3>
+                ${data.result[i].post}
+                </h3>
+            </div>
+         </div></a>`
+        }
+        var classes = document.querySelectorAll('.job-item');
+         [].forEach.call(classes, function(el) {
+         el.classList.remove("job-pill");
+         });
+        document.getElementById("job-btn").classList.add("job-pill")
+    })
+    var classes = document.querySelectorAll('.nav-icons');
+    [].forEach.call(classes, function(el) {
+    el.classList.remove("active");
+    });
+    document.getElementById('job-icon').classList.add("active")
+    var containers = document.querySelectorAll('.all-container');
+    [].forEach.call(containers, function(el) {
+    el.style.display="none";
+    });
+    document.getElementById('all-job-container').style.display="block"
+}
+function gettopicjob(e){
+    var topic = e.innerHTML;
+    fetch(`https://arcane-cove-56746.herokuapp.com/api/newsapi/v1/job?topic=${topic}`)
+    .then(res=>{
+        return res.json()
+    })
+    .then(data=>{
+        document.getElementById("job-container").innerHTML='';
+        for(var i=0; i<(data.result).length; i++){
+            document.getElementById("job-container").innerHTML+=`<a href="${data.result[i].link}" class="wrapper"><div class="jobs">
+            <div class="jobtext">
+                <p class="meta-text">
+                   ${data.result[i].recruiter}<br>${data.result[i].qualification}
+                </p>
+                <h3>
+                ${data.result[i].post}
+                </h3>
+            </div>
+         </div></a>`
+         var classes = document.querySelectorAll('.job-item');
+         [].forEach.call(classes, function(el) {
+         el.classList.remove("job-pill");
+         });
+        e.classList.add("job-pill")
+        }
+    })
 }
 /*window.onhashchange = function() {
     var param = (window.location.hash).replace("#","")
