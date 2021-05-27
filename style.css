@@ -78,6 +78,7 @@ a.wrapperlink,a.wrapperlink:active,a.wrapperlink:hover{
 #all-job-container{
     color: black;
     display: none;
+    padding-top:15px;
 }
 .job-container{
     width: 89%;
