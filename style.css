@@ -78,7 +78,6 @@ a.wrapperlink,a.wrapperlink:active,a.wrapperlink:hover{
 #all-job-container{
     color: black;
     display: none;
-    padding-top:15px;
 }
 .job-container{
     width: 89%;
@@ -136,6 +135,24 @@ a.wrapperlink,a.wrapperlink:active,a.wrapperlink:hover{
     transition: 0.2s;
     overflow: hidden;
 
+}
+.spinner{
+    height: 40px;
+    width: 40px;
+    border: 4px solid mediumblue;
+    border-radius: 50%;
+    opacity: 0.3;
+    border-bottom: 4px solid transparent;
+    margin: auto;
+    animation: spinner 2s infinite linear;
+}
+@keyframes spinner {
+    0%{
+        transform: rotate(180deg);
+    }
+    0%{
+        transform: rotate(360deg);
+    }
 }
 .job-pill{
     background-color:mediumblue !important;
