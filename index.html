@@ -16,7 +16,7 @@
  <i class="fa fa-search" id="searchicon"></i>
  </form>
  <div class="item-container mx-auto">
-    <div class="items" onclick="loadallnews(this)">All</div>
+    <div class="items active-pill" id='all-btn' onclick="loadallnews(this)">All</div>
      <div class="items" onclick="gettopicnews(this)">Cricket</div>
      <div class="items"  onclick="gettopicnews(this)">Football</div>
      <div class="items"  onclick="gettopicnews(this)">Covid19</div>
@@ -48,12 +48,16 @@
 <div class="all-container" id="all-wallpaper-container">
 
 </div>
+<div class="all-container" id="all-job-container">
+    
+</div>
  <div class="navbar" id="navbar">
 <i class="fa fa-home nav-icons active" id="home-icon" onclick="loadallnews()"></i>
 <i class="fa fa-cloud nav-icons" id="weather-icon" onclick="loadweather(this)"></i>
 <i class="fa fa-image nav-icons" id="wallpaper-icon" onclick="loadwallpapers(this)"></i>
-<i class="fa fa-syringe nav-icons" id="vaccine-icon"></i>
+<i class="fa fa-men nav-icons" id="job-icon" onclick="loadsjobs(this)"></i>
  </div>
+ <iframe name="target" style="display: none;"></iframe>
 <script src="./index.js"></script>  
 </body>
 </html>
