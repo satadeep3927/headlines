@@ -39,7 +39,7 @@ window.addEventListener('load',()=>{
     .then(data=>{
         document.getElementById("news-container").innerHTML= '';
         for(var i=0; i<data.totalArticles; i++){
-            document.getElementById("news-container").innerHTML+=`<div class="news" style="background: linear-gradient( transparent 20%, rgb(56, 55, 55) 100%),url('${data.articles[i]['image']}')">
+            document.getElementById("news-container").innerHTML+=`<a href=${data.articles[i].link} class="wrapper"><div class="news" style="background: linear-gradient( transparent 20%, rgb(56, 55, 55) 100%),url('${data.articles[i]['image']}')">
             <div class="text">
                 <p class="meta-text">
                     ${data.articles[i]['source']['name']} · ${dateconverter(data.articles[i]['publishedAt'])}
@@ -48,7 +48,7 @@ window.addEventListener('load',()=>{
                 ${data.articles[i]['title']}
                 </h3>
             </div>
-         </div>`
+         </div></a>`
         }
     })
     fetch('https://arcane-cove-56746.herokuapp.com/api/newsapi/v1/?q=news')
@@ -57,7 +57,7 @@ window.addEventListener('load',()=>{
     })
     .then(data=>{
         for(var i=0; i<data.totalArticles; i++){
-            document.getElementById("news-container").innerHTML+=`<div class="news" style="background: linear-gradient( transparent 20%, rgb(56, 55, 55) 100%),url('${data.articles[i]['image']}')">
+            document.getElementById("news-container").innerHTML+=`<a href=${data.articles[i].link} class="wrapper"><div class="news" style="background: linear-gradient( transparent 20%, rgb(56, 55, 55) 100%),url('${data.articles[i]['image']}')">
             <div class="text">
                 <p class="meta-text">
                     ${data.articles[i]['source']['name']} · ${dateconverter(data.articles[i]['publishedAt'])}
@@ -66,7 +66,7 @@ window.addEventListener('load',()=>{
                 ${data.articles[i]['title']}
                 </h3>
             </div>
-         </div>`
+         </div></a>`
         }
     })
 })
@@ -80,7 +80,7 @@ function gettopicnews(e){
     .then(data=>{
         document.getElementById("news-container").innerHTML='';
         for(var i=0; i<data.totalArticles; i++){
-            document.getElementById("news-container").innerHTML+=`<div class="news" style="background: linear-gradient( transparent 20%, rgb(56, 55, 55) 100%),url('${data.articles[i]['image']}')">
+            document.getElementById("news-container").innerHTML+=`<a href=${data.articles[i].link} class="wrapper"><div class="news" style="background: linear-gradient( transparent 20%, rgb(56, 55, 55) 100%),url('${data.articles[i]['image']}')">
             <div class="text">
                 <p class="meta-text">
                     ${data.articles[i]['source']['name']} · ${dateconverter(data.articles[i]['publishedAt'])}
@@ -89,7 +89,12 @@ function gettopicnews(e){
                 ${data.articles[i]['title']}
                 </h3>
             </div>
-         </div>`
+         </div></a>`
+         var classes = document.querySelectorAll('.items');
+         [].forEach.call(classes, function(el) {
+         el.classList.remove("active-pill");
+         });
+        e.classList.add("active-pill")
         }
     })
 }
@@ -120,7 +125,7 @@ function searchtopic(e){
     })
     e.preventDefault();
 }
-function loadallnews(){
+function loadallnews(e){
     fetch('https://arcane-cove-56746.herokuapp.com/api/newsapi/v1/?q=india')
     .then(res=>{
         return res.json()
@@ -157,6 +162,11 @@ function loadallnews(){
             </div>
          </div>`
         }
+        var classes = document.querySelectorAll('.items');
+         [].forEach.call(classes, function(el) {
+         el.classList.remove("active-pill");
+         });
+        document.getElementById("all-btn").classList.add("active-pill")
     })
     var classes = document.querySelectorAll('.nav-icons');
     [].forEach.call(classes, function(el) {
@@ -275,3 +285,17 @@ var loadwallpapers = (e)=>{
     document.getElementById('all-wallpaper-container').style.display="block"
 
 }
+/*window.onhashchange = function() {
+    var param = (window.location.hash).replace("#","")
+    if(param==""){
+        loadallnews()
+        window.history.deleteAll()
+    }
+    else if(param=="all-wallpaper-container"){
+        loadwallpapers()
+    }
+    else if(param=="all-weather-container"){
+        loadweather()
+    }
+}
+ */
