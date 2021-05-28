@@ -39,7 +39,6 @@ window.addEventListener('load',()=>{
     })
     .then(data=>{
         for(var i=0; i<data.totalArticles; i++){
-            document.getElementById("news-container").innerHTML=''
             document.getElementById("news-container").innerHTML+=`<a href=${data.articles[i].link} class="wrapper"><div class="news" style="background: linear-gradient( transparent 20%, rgb(56, 55, 55) 100%),url('${data.articles[i]['image']}')">
             <div class="text">
                 <p class="meta-text">
