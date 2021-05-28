@@ -384,6 +384,7 @@ function searchjob(e){
     .then(data=>{
         document.getElementById("job-container").innerHTML='';
         for(var i=0; i<(data.result).length; i++){
+            for(var i=0; i<(data.result).length; i++){
             document.getElementById("job-container").innerHTML+=`<a href="${data.result[i].link}" class="wrapper"><div class="jobs">
             <div class="jobtext">
                 <p class="meta-text">
@@ -394,6 +395,7 @@ function searchjob(e){
                 </h3>
             </div>
          </div></a>`
+        }
         }
     })
     e.preventDefault();
