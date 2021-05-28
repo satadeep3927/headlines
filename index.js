@@ -38,8 +38,8 @@ window.addEventListener('load',()=>{
         return res.json()
     })
     .then(data=>{
-        document.getElementById("news-container").innerHTML=''
         for(var i=0; i<data.totalArticles; i++){
+            document.getElementById("news-container").innerHTML=''
             document.getElementById("news-container").innerHTML+=`<a href=${data.articles[i].link} class="wrapper"><div class="news" style="background: linear-gradient( transparent 20%, rgb(56, 55, 55) 100%),url('${data.articles[i]['image']}')">
             <div class="text">
                 <p class="meta-text">
@@ -373,6 +373,32 @@ function gettopicjob(e){
         }
     })
 }
+function searchjob(e){
+    var topic = document.getElementById('jobsearch').value.toLowerCase();
+    document.getElementById("job-container").innerHTML=`<div class="spinner-container"><div class="spinner"></div> </div>`
+    document.getElementById('jobsearch').value=''
+    fetch(`https://arcane-cove-56746.herokuapp.com/api/newsapi/v1/search/job/?q=${topic}`)
+    .then(res=>{
+        return res.json()
+    })
+    .then(data=>{
+        document.getElementById("job-container").innerHTML='';
+        for(var i=0; i<(data.result).length; i++){
+            document.getElementById("job-container").innerHTML+=`<a href="${data.result[i].link}" class="wrapper"><div class="jobs">
+            <div class="jobtext">
+                <p class="meta-text">
+                   ${data.result[i].recruiter}<br>${data.result[i].qualification}
+                </p>
+                <h3>
+                ${data.result[i].post}
+                </h3>
+            </div>
+         </div></a>`
+        }
+    })
+    e.preventDefault();
+}
+
 /*window.onhashchange = function() {
     var param = (window.location.hash).replace("#","")
     if(param==""){
