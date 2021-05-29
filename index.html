@@ -48,14 +48,66 @@
 <div class="all-container" id="all-wallpaper-container">
 
 </div>
-<div class="all-container" id="all-job-container">
+<div class="all-container mx-auto" id="all-job-container">
+    <form class="search-wrap mx-auto" id="searchbar" autocomplete="off" onsubmit="searchjob(event)">
+        <input type="text" name="" id="jobsearch" placeholder="Search for a Job" required>
+        <i class="fa fa-search" id="searchicon"></i>
+        </form>
+    <div class="item-container mx-auto">
+        <div class="items job-item job-pill" id='job-btn' onclick="loadalljobs()">All</div>
+         <div class="items job-item" onclick="gettopicjob(this)">Banks</div>
+         <div class="items job-item"  onclick="gettopicjob(this)">Other Govt Financial Institutes</div>
+         <div class="items job-item"  onclick="gettopicjob(this)">Other All India Exams</div>
+         <div class="items job-item"  onclick="gettopicjob(this)">All India Fellow Jobs</div>
+         <div class="items job-item"  onclick="gettopicjob(this)">Defence Jobs</div>
+         <div class="items job-item"  onclick="gettopicjob(this)">Railways</div>
+         <div class="items job-item"  onclick="gettopicjob(this)">Andhra Pradesh</div>
+         <div class="items job-item"  onclick="gettopicjob(this)">Arunachal Pradesh</div>
+         <div class="items job-item"  onclick="gettopicjob(this)">Assam</div>
+         <div class="items job-item"  onclick="gettopicjob(this)">Bihar</div>
+         <div class="items job-item"  onclick="gettopicjob(this)">Chandigarh</div>
+         <div class="items job-item"  onclick="gettopicjob(this)">Chhattisgarh</div>
+         <div class="items job-item"  onclick="gettopicjob(this)">Dadra and Nagar Haveli</div>
+         <div class="items job-item"  onclick="gettopicjob(this)">Daman and Diu</div>
+         <div class="items job-item"  onclick="gettopicjob(this)">Delhi</div>
+         <div class="items job-item"  onclick="gettopicjob(this)">Goa</div>
+         <div class="items job-item"  onclick="gettopicjob(this)">Gujarat</div>
+         <div class="items job-item"  onclick="gettopicjob(this)">Haryana</div>
+         <div class="items job-item" onclick="gettopicjob(this)">Himachal Pradesh</div>
+         <div class="items job-item"  onclick="gettopicjob(this)">Jammu and Kashmir</div>
+         <div class="items job-item"  onclick="gettopicjob(this)">West Bengal</div>
+         <div class="items job-item"  onclick="gettopicjob(this)">Jharkhand</div>
+         <div class="items job-item"  onclick="gettopicjob(this)">Karnataka</div>
+         <div class="items job-item"  onclick="gettopicjob(this)">Kerala</div>
+         <div class="items job-item"  onclick="gettopicjob(this)">Lakshadweep</div>
+         <div class="items job-item"  onclick="gettopicjob(this)">Maharashtra</div>
+         <div class="items job-item"  onclick="gettopicjob(this)">Manipur</div>
+         <div class="items job-item"  onclick="gettopicjob(this)">Meghalaya</div>
+         <div class="items job-item"  onclick="gettopicjob(this)">Mizoram</div>
+         <div class="items job-item"  onclick="gettopicjob(this)">Odisha</div>
+         <div class="items job-item"  onclick="gettopicjob(this)">Puducherry</div>
+         <div class="items job-item"  onclick="gettopicjob(this)">Punjab</div>
+         <div class="items job-item"  onclick="gettopicjob(this)">Rajasthan</div>
+         <div class="items job-item"  onclick="gettopicjob(this)">Sikkim</div>
+         <div class="items job-item"  onclick="gettopicjob(this)">Tamil Nadu</div>
+         <div class="items job-item"  onclick="gettopicjob(this)">Telangana</div>
+         <div class="items job-item" onclick="gettopicjob(this)">Tripura</div>
+         <div class="items job-item"  onclick="gettopicjob(this)">Uttar Pradesh</div>
+         <div class="items job-item"  onclick="gettopicjob(this)">Uttarakhand</div>
+         <div class="items job-item"  onclick="gettopicjob(this)">Medical/ Hospital Jobs</div>
+         
     
+         
+     </div>
+     <div class="job-container mx-auto" id="job-container">
+         
+     </div>
 </div>
  <div class="navbar" id="navbar">
 <i class="fa fa-home nav-icons active" id="home-icon" onclick="loadallnews()"></i>
 <i class="fa fa-cloud nav-icons" id="weather-icon" onclick="loadweather(this)"></i>
 <i class="fa fa-image nav-icons" id="wallpaper-icon" onclick="loadwallpapers(this)"></i>
-<i class="fa fa-men nav-icons" id="job-icon" onclick="loadsjobs(this)"></i>
+<i class="fas fa-briefcase nav-icons" id="job-icon" onclick="loadalljobs(this)"></i>
  </div>
  <iframe name="target" style="display: none;"></iframe>
 <script src="./index.js"></script>  
