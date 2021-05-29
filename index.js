@@ -38,8 +38,8 @@ window.addEventListener('load',()=>{
         return res.json()
     })
     .then(data=>{
+        document.getElementById("news-container").innerHTML=''
         for(var i=0; i<data.totalArticles; i++){
-            document.getElementById("news-container").innerHTML=''
             document.getElementById("news-container").innerHTML+=`<a href=${data.articles[i].link} class="wrapper"><div class="news" style="background: linear-gradient( transparent 20%, rgb(56, 55, 55) 100%),url('${data.articles[i]['image']}')">
             <div class="text">
                 <p class="meta-text">
@@ -384,7 +384,7 @@ function searchjob(e){
     .then(data=>{
         document.getElementById("job-container").innerHTML='';
         for(var i=0; i<(data.result).length; i++){
-            for(var i=0; i<(data.result).length; i++){
+            if(data.result[i].post!=""){
             document.getElementById("job-container").innerHTML+=`<a href="${data.result[i].link}" class="wrapper"><div class="jobs">
             <div class="jobtext">
                 <p class="meta-text">
@@ -395,8 +395,7 @@ function searchjob(e){
                 </h3>
             </div>
          </div></a>`
-        }
-        }
+        }}
     })
     e.preventDefault();
 }
