@@ -270,3 +270,14 @@ a.wrapperlink,a.wrapperlink:active,a.wrapperlink:hover{
     border-radius: 10px;
     margin-top: 14px;
 }
+.d-noti{
+    display: none;
+}
+@media only screen and (min-width:1000px){
+    body div{
+        display: none !important;
+    }    
+    .d-noti{
+        display: block;
+    }
+}
